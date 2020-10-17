@@ -31,12 +31,14 @@
   likeButton.click()
   await waiter(500)
 
+  console.log(`# Running auto follow script with ${INTERVAL / 1000}s interval between action`)
+
   let count = 0
 
   while (true) {
     const button = getFollowButton()
     if (!button) {
-      console.log('Any button found')
+      console.log('No button found')
       await waiter(INTERVAL)
       continue
     }
