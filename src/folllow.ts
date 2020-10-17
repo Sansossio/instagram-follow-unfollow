@@ -12,12 +12,11 @@
     })
   }
 
-  function scrollParent (button: HTMLButtonElement) {
+  function scrollParent (to: number) {
     let parentDiv = document.getElementsByClassName('Igw0E IwRSH eGOV_ vwCYk i0EQd')[0]
     if (parentDiv) {
       parentDiv = parentDiv.getElementsByTagName('div')[0]
-      const offsetTop = (button.parentNode.parentNode as any).offsetTop
-      parentDiv.scrollTop = offsetTop
+      parentDiv.scrollTop = to
     }
   }
 
@@ -29,9 +28,11 @@
   }
 
   likeButton.click()
-  await waiter(500)
 
-  console.log(`# Running auto follow script with ${INTERVAL / 1000}s interval between action`)
+  // Wait 1 second after like button click
+  await waiter(1 * 1000)
+
+  console.log(`# Running auto follow script with ${INTERVAL / 1000}s interval between actions`)
 
   let count = 0
 
@@ -39,10 +40,14 @@
     const button = getFollowButton()
     if (!button) {
       console.log('No button found')
+
+      // Scroll likes div to end
+      scrollParent(10 * 1000 * 1000)
+
       await waiter(INTERVAL)
       continue
     }
-    scrollParent(button)
+    scrollParent((button.parentNode.parentNode as any).offsetTop)
     button.click()
     console.log(`-> Following new user (${++count})`)
     await waiter(INTERVAL)
