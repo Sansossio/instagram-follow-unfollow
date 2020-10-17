@@ -1,6 +1,6 @@
 (async () => {
   const INTERVAL = 30 * 1000
-  const likeButton: HTMLButtonElement = document.querySelector('#react-root > section > main > div > div.ltEKP > article > div.eo2As > section.EDfFK.ygqzn > div > div.Nm9Fw > button')
+  const likeButton: HTMLButtonElement = document.getElementsByClassName('Nm9Fw')[0].getElementsByClassName('sqdOP yWX7d _8A5w5')[0] as any
   if (!likeButton) {
     alert('You must be inside an instagram publication')
     return
