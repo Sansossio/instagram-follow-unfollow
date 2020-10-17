@@ -16,7 +16,7 @@
     let parentDiv = document.getElementsByClassName('Igw0E IwRSH eGOV_ vwCYk i0EQd')[0]
     if (parentDiv) {
       parentDiv = parentDiv.getElementsByTagName('div')[0]
-      parentDiv.scrollTop = to
+      parentDiv.scrollTop = to || parentDiv.scrollHeight
     }
   }
 
@@ -42,7 +42,7 @@
       console.log('No button found')
 
       // Scroll likes div to end
-      scrollParent(10 * 1000 * 1000)
+      scrollParent(0)
 
       await waiter(INTERVAL)
       continue
