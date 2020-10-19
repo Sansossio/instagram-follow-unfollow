@@ -33,7 +33,7 @@
   // Wait 1 second after like button click
   await waiter(1 * 1000)
 
-  console.log(`# Running auto follow script with ${INTERVAL / 1000}s interval between actions`)
+  console.log(`# Running auto unfollow-followers script with ${INTERVAL / 1000}s interval between actions`)
 
   let count = 0
 
