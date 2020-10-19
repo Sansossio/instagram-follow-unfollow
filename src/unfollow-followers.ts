@@ -1,8 +1,10 @@
 (async () => {
-  const INTERVAL = 22.5 * 1000
-  const likeButton: HTMLButtonElement = document.getElementsByClassName('Nm9Fw')[0].getElementsByClassName('sqdOP yWX7d _8A5w5')[0] as any
-  if (!likeButton) {
-    alert('You must be inside an instagram publication')
+  const INTERVAL = 20 * 1000
+  const followersButton: HTMLButtonElement =
+    document.querySelector('#react-root > section > main > div > header > section > ul > li:nth-child(2) > a')
+
+  if (!followersButton) {
+    alert('You must be inside your instagram profile')
     return
   }
 
@@ -13,21 +15,20 @@
   }
 
   function scrollParent (to: number) {
-    let parentDiv = document.getElementsByClassName('Igw0E IwRSH eGOV_ vwCYk i0EQd')[0]
+    let parentDiv = document.querySelector('body > div.RnEpo.Yx5HN > div > div > div.isgrP')
     if (parentDiv) {
-      parentDiv = parentDiv.getElementsByTagName('div')[0]
       parentDiv.scrollTop = to || parentDiv.scrollHeight
     }
   }
 
   function getFollowButton () {
-    const buttonText = 'Follow'
+    const buttonText = 'Following'
     const button = Array.from(document.querySelectorAll('button'))
       .filter(button => button.textContent === buttonText)[0]
     return button
   }
 
-  likeButton.click()
+  followersButton.click()
 
   // Wait 1 second after like button click
   await waiter(1 * 1000)
@@ -47,9 +48,18 @@
       await waiter(INTERVAL)
       continue
     }
+
     scrollParent((button.parentNode.parentNode as any).offsetTop)
     button.click()
-    console.log(`-> Following new user (${++count})`)
+
+    // Confirmation modal
+
+    await waiter(300)
+
+    const confirmationModal: any = document.querySelector('body > div:nth-child(18) > div > div > div > div.mt3GC > button.aOOlW.-Cab_')
+    confirmationModal?.click()
+
+    console.log(`-> Unfollowing user (${++count})`)
     await waiter(INTERVAL)
   }
 })()
