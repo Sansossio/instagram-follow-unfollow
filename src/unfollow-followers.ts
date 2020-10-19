@@ -22,9 +22,9 @@
   }
 
   function getFollowButton () {
-    const buttonText = 'Following'
+    const buttonText = ['Following', 'Requested']
     const button = Array.from(document.querySelectorAll('button'))
-      .filter(button => button.textContent === buttonText)[0]
+      .filter(button => buttonText.indexOf(button.textContent) !== -1)[0]
     return button
   }
 
