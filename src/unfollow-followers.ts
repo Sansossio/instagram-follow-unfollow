@@ -53,13 +53,13 @@
     button.click()
 
     // Confirmation modal
-
     await waiter(300)
 
     const confirmationModal: any = document.querySelector('body > div:nth-child(18) > div > div > div > div.mt3GC > button.aOOlW.-Cab_')
     confirmationModal?.click()
 
     console.log(`-> Unfollowing user (${++count})`)
+
     await waiter(INTERVAL)
   }
 })()
