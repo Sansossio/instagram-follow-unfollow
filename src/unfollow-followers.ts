@@ -30,8 +30,8 @@
 
   followersButton.click()
 
-  // Wait 1 second after like button click
-  await waiter(1 * 1000)
+  // Wait 3 second after like button click
+  await waiter(3 * 1000)
 
   console.log(`# Running auto unfollow-followers script with ${INTERVAL / 1000}s interval between actions`)
 
