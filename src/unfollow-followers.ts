@@ -1,5 +1,5 @@
 (async () => {
-  const INTERVAL = 23 * 1000
+  const INTERVAL = 45 * 1000
   const followersButton: HTMLButtonElement =
     document.querySelector('#react-root > section > main > div > header > section > ul > li:nth-child(2) > a')
 
